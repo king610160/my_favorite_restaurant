@@ -1,0 +1,40 @@
+<!-- ./views/index.handlebars -->
+<div class="container mt-5">
+  <!-- search bar -->
+  <div class="row" id="search-bar">
+    <div class="col-12">
+      <form action="/search">
+        <div class="input-group mb-3">
+          <input type="text" name="keyword" value="{{keyword}}" class="form-control"
+            placeholder="請輸入餐廳名" aria-label="Restaurant Name..." aria-describedby="search-button">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="submit" id="search-button">Search</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- Restaurant list -->
+  <div class="row" id="data-panel">
+    {{#each reataurants}}
+    <div class="col-12 col-sm-6 col-md-4">
+      <a href="/restaurants/{{this.id}}" class="text-secondary">
+        <div class="card mb-2">
+          <img class="card-img-top" src="{{this.image}}" alt="{{this.name}}">
+          <div class="card-body restaurant-item-body p-3">
+            <h5 class="card-title mb-3">{{this.name}}</h5>
+            <h6 class="card-title">
+              <i class="fas fa-utensils pr-2" style="color:green"></i>
+              {{this.category}}
+            </h6>
+            <h6 class="card-title">
+              <i class="fas fa-star fa-xs" style="color:yellow"></i>
+              {{this.rating}}
+            </h6>
+          </div>
+        </div>
+      </a>
+    </div>
+    {{/each}}
+  </div>
+</div>

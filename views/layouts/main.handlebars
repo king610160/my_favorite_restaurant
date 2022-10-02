@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我的餐廳清單</title>
+
+  <!--include css files here-->
+  <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+</head>
+
+<body>
+  <!-- navigation -->
+  <!--這裡是每個樣版都有的地方-->
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container d-flex justify-content-start">
+      <i class="fa-solid fa-utensils fa-2xl me-3" style="color:green"></i>
+      <a class="navbar-brand fs-1" href="#">我的餐廳清單</a>
+    </div>
+  </nav>
+
+  <!-- partial templates will replace the part of "body" here -->
+  {{{ body }}}
+  <!--include javascript files here-->
+  <script src="/javascripts/popper.js"></script>
+  <script src="/javascripts/bootstrap.js"></script>
+  <script src="https://kit.fontawesome.com/dd016403e6.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
