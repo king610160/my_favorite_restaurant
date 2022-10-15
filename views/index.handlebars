@@ -1,40 +1,56 @@
 <!-- ./views/index.handlebars -->
 <div class="container mt-5">
   <!-- search bar -->
-  <div class="row" id="search-bar">
-    <div class="col-12">
-      <form action="/search">
-        <div class="input-group mb-3">
-          <input type="text" name="keyword" value="{{keyword}}" class="form-control"
-            placeholder="請輸入餐廳或是種類" aria-label="Restaurant Name..." aria-describedby="search-button">
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="submit" id="search-button">Search</button>
+  <div class="container search-bar">
+    <div class="search-bar-outer">
+      <div class="search-bar-inner">
+        <form action="/search">
+          <h4 class="mb-2">尋找餐廳：</h4>
+          <div class="input-group mb-3">
+            <input type="text" name="keywords" class="form-control" placeholder="輸入餐廳、分類"
+              aria-label="Restaurant Name..." aria-describedby="button-addon2" value="{{keywords}}" />
+            <button class="btn btn-major" type="submit" id="search-button"><i class="fas fa-search"></i></button>
           </div>
+        </form>
+        <div class="text-end">
+          <a href="/restaurants/new"><button class="btn btn-primary">新增餐廳</button></a>
         </div>
-      </form>
+      </div>
     </div>
   </div>
-  <!-- Restaurant list -->
-  <div class="row" id="data-panel">
-    {{#each restaurants}}
-    <div class="col-12 col-sm-6 col-md-4">
-      <a href="/restaurants/{{this.id}}" class="text-secondary">
-        <div class="card mb-2">
-          <img class="card-img-top" src="{{this.image}}" alt="{{this.name}}">
-          <div class="card-body restaurant-item-body p-3">
-            <h5 class="card-title mb-3">{{this.name}}</h5>
-            <h6 class="card-title">
-              <i class="fas fa-utensils pr-2" style="color:green"></i>
-              {{this.category}}
-            </h6>
-            <h6 class="card-title">
-              <i class="fas fa-star fa-xs" style="color:yellow"></i>
-              {{this.rating}}
-            </h6>
+</div>
+<!-- Restaurant list -->
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12 d-flex flex-wrap">
+        {{#each restaurant}}
+        <div class="d-flex col-4 mb-2 mx-auto">
+          <div class="card mb-1">
+            <img class="card-img-top" src="{{this.image}}" alt="{{this.name}}" />
+            <div class="card-body p-3">
+              <h6 class="card-title mb-1 text-secondary">{{this.name}}</h6>
+
+              <div class="restaurant-category mb-1">
+                <i class="fas fa-utensils pr-2"></i>
+                {{this.category}}
+              </div>
+
+              <span class="badge rounded-pill text-bg-danger ">
+                {{this.rating}}
+                <i class="fas fa-star fa-xs"></i>
+              </span>
+
+            </div>
+            <div class="card-footer d-flex justify-content-end flex-wrap">
+              <a href="/restaurants/{{this._id}}/edit"><button class="btn btn-success btn-sm me-1">Edit</button></a>
+              <a href="/restaurants/{{this._id}}"><button class="btn btn-secondary btn-sm me-1">Details</button></a>
+              <form action="/restaurants/{{this._id}}?_method=DELETE" method="POST">
+                <button type="submit" class="btn btn-danger btn-sm text-white">delete</button>
+              </form>
+            </div>
           </div>
         </div>
-      </a>
+        {{/each}}
     </div>
-    {{/each}}
   </div>
 </div>
