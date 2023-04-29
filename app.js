@@ -8,14 +8,13 @@ const methodOverride = require("method-override")
 const Restaurant = require("./models/restaurant")
 const routes = require('./routes')
 
+const usePassport = require('./config/passport')
+require('./config/mongoose')
 
 // 加入這段 code, 僅在非正式環境時, 使用 dotenv
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
-
-require('./config/mongoose')
-
 
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs'}))
 app.set('view engine', 'hbs')
@@ -29,6 +28,9 @@ app.use(session({
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride("_method"))
+
+usePassport(app)
+
 app.use(routes)
 
 app.listen(port, () => {
