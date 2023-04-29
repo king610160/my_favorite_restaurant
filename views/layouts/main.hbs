@@ -16,13 +16,22 @@
   <!--這裡是每個樣版都有的地方-->
   <nav class="navbar navbar-dark bg-dark d-flex flex-row">
     <div class="container">
-      <div class="justify-content-start">
+      <a class="navbar-brand" href="/">
+        {{#if isAuthenticated}}{{ user.name}}'s {{/if}}
+        Todo List
+      </a>
+      {{#if isAuthenticated}}
+        <a href="/users/logout" class="btn btn-outline-light">Logout</a>
+      {{else}}
+        <a href="/users/login" class="btn btn-outline-light">Login</a>
+      {{/if}}
+      {{!-- <div class="justify-content-start">
         <i class="fa-solid fa-utensils fa-2xl me-3" style="color:green"></i>
         <a class="navbar-brand fs-1" href="/">我的餐廳清單</a>
       </div>
       <div class="justify-content-end">
-        <a class="justify-content-end" href="/restaurants/new"><button class="btn btn-primary">新增餐廳</button></a>
-      </div>
+        
+      </div> --}}
     </div>
   </nav>
 
