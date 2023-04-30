@@ -16,18 +16,19 @@ router.get("/search", (req, res) => {
   if (!req.query.keywords) {
     res.redirect("/")
   }
+  console.log(req.query.keywords)
 
-  const keywords = req.query.keywords
   const keyword = req.query.keywords.trim().toLowerCase()
+  const userId = req.user._id   // 當時使用者id
 
-  Restaurant.find()
+  Restaurant.find( {userId} )
     .lean()
     .sort({ _id: 'asc' }) //desc
     .then(restaurant => {
       const filterRestaurant = restaurant.filter(
         data => data.name.toLowerCase().includes(keyword) || data.category.includes(keyword)
       )
-      res.render("index", { restaurant: filterRestaurant, keywords })
+      res.render("index", { restaurant: filterRestaurant, keyword })
     })
     .catch(err => console.log(err))
 })
