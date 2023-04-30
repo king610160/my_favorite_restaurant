@@ -12,11 +12,11 @@ router.get("/", (req, res) => {
 })
 
 // 搜尋特定餐廳
-router.get("/search", (req, res) => {
+router.get("/search", (req, res, next) => {
   if (!req.query.keywords) {
     res.redirect("/")
+    return next()
   }
-  console.log(req.query.keywords)
 
   const keyword = req.query.keywords.trim().toLowerCase()
   const userId = req.user._id   // 當時使用者id

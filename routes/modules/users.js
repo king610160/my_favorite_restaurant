@@ -47,16 +47,21 @@ router.post('/register', (req, res) => {
       })
     } 
     return bcrypt
-    .genSalt(10) // 產生「鹽」，並設定複雜度係數為 10
-    .then(salt => bcrypt.hash(password, salt)) // 為使用者密碼「加鹽」，產生雜湊值
-    .then(hash => User.create({
-      name,
-      email,
-      password: hash // 用雜湊值取代原本的使用者密碼
-    }))
-    .then(() => res.redirect('/'))
-    .catch(err => console.log(err))
+      .genSalt(10) // 產生「鹽」，並設定複雜度係數為 10
+      .then(salt => bcrypt.hash(password, salt)) // 為使用者密碼「加鹽」，產生雜湊值
+      .then(hash => User.create({
+        name,
+        email,
+        password: hash // 用雜湊值取代原本的使用者密碼
+      }))
+      .then((req, res, next) => {
+        res.redirect('/')
+        return next()
+      })
+      .catch(err => console.log(err))
+    
   })
+  
 })
 
 router.get('/logout', (req, res) => {
