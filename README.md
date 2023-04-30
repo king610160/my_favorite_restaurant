@@ -8,6 +8,7 @@
 
 ### 功能
 
+- 可使用facebook登入
 - 查看所有餐廳
 ![Index page about Restaurant List](./public/image/home.png)
 - 瀏覽餐廳的詳細資訊
@@ -30,11 +31,10 @@
    npm install // 安裝套件
    ```
 
-4. 設定 MongoDB 環境變數
+4. 設定環境變數，請參考env.example
 
    ```
-   set MONGODB_URI="你的MongoDB連線字串" // for Windows cmd
-   export MONGODB_URI="你的MongoDB連線字串" // for bash (MacOS bash terminal and Git bash for Windows)
+   MONGODB_URL=mongodb+srv://<username>:<password>@<cluster>.pk4dwnp.mongodb.net/?retryWrites=true&w=majority
    ```
 
 5. 寫入種子資料
@@ -43,10 +43,10 @@
    npm run seed
    ```
 
-6. 開啟程式
+6. 啟動程式
 
    ```bash
-   npm run start
+   npm run dev
    ```
 
 7. 若看見此行訊息則代表順利運行，打開瀏覽器進入到以下網址
@@ -78,3 +78,5 @@
 - passport 0.4.1
 - passport-facebook 3.0.0
 - passport-local 1.0.0
+- Font-awesome 5.8.1
+
