@@ -23,7 +23,7 @@
 ## 開始使用
 
 1. 請先確認有安裝 node.js 與 npm
-2. 將專案 clone 到本地
+2. 使用git clone專案 clone 到本地
 3. 在本地開啟之後，透過終端機進入資料夾，輸入：
 
    ```bash
@@ -70,6 +70,11 @@
 - Express 4.16.4
 - Express-Handlebars 3.0.0
 - MongoDB
-- mongoose 6.0.5
-- method-override 3.0.0
-
+- Mongoose 6.0.5
+- Method-override 3.0.0
+- Bcryptjs 2.4.3
+- Connect-flash 0.1.1
+- Express-session 1.17.1
+- passport 0.4.1
+- passport-facebook 3.0.0
+- passport-local 1.0.0
