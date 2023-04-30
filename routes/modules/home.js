@@ -3,9 +3,10 @@ const router = express.Router()
 const Restaurant = require('../../models/restaurant')
 
 router.get("/", (req, res) => {
-  Restaurant.find({})
+  const userId = req.user._id   // 變數設定
+  Restaurant.find({ userId })   // 加入查詢條件
     .lean()
-    .sort({ _id: 'asc' }) //desc
+    .sort({ _id: 'asc' }) 
     .then(restaurant => res.render("index", { restaurant }))
     .catch(err => console.log(err))
 })
